@@ -17,16 +17,12 @@ $addBtn.addEventListener("click", () => {
   const text = $input.value.trim();
   if(!text) return;
 
-  todos.push({
-    id: Date.now(),
-    text,
-    done: false,
-    editing: false,
-  });
-
+  commit([
+    ...todos,
+    { id: Date.now(), text, done: false, editing: false }
+  ]);
   $input.value = "";
-  save();
-  render();
+
 });
 
 $input.addEventListener("keydown", (e) => {
@@ -60,11 +56,10 @@ $list.addEventListener("click", (e) => {
     const newText = editInput.value.trim();
     if(!newText) return;
 
-    todos = todos.map((t) =>
-      t.id === id ? { ...t, text: newText, editing: false } : t
+    commit(
+      todos.map((t) =>
+        t.id === id ? { ...t, text: newText, editing: false } : t)
     );
-    save();
-    render();
     return;
   }
 
@@ -73,9 +68,9 @@ $list.addEventListener("click", (e) => {
     const ok = confirm("本当によろしいですか？");
     if (!ok) return;
 
-    todos = todos.filter((t) => t.id !== id);
-    save();
-    render();
+    commit(
+      todos.filter((t) => t.id !== id)
+    );
     return;
   }
 
@@ -88,11 +83,10 @@ $list.addEventListener("change", (e) => {
   const li = e.target.closest("li");
   const id = Number(li.dataset.id);
 
-  todos = todos.map((t) =>
-    t.id === id ? { ...t, done: checkbox.checked } : t
-  );
-  save();
-  render();
+  commit(
+      todos.map((t) => 
+        t.id === id ? { ...t, done: checkbox.checked } : t)
+    );
 });
 
 // === Render ===
@@ -138,6 +132,13 @@ function renderList() {
 
     $list.appendChild(li);
   }
+}
+
+// === Commit ===
+function commit(nextTodos) {
+  todos = nextTodos;
+  save();
+  render();
 }
 
 // === Storage ===
