@@ -1,0 +1,58 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 12px;
+}
+
+.create {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#create input,
+input#todoInput {
+  flex: 1;
+  padding: 8px;
+}
+
+.counters {
+  margin: 10px 0 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.edit {
+  flex: 1;
+  padding: 6px;
+}
+
+button {
+  padding: 6px 10px;
+}
