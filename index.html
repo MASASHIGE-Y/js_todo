@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla JS ToDo</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>ToDo</h1>
+
+    <!-- Create -->
+     <section class="create">
+      <input id="todoInput" type="text" placeholder="例：掃除" />
+      <button id="addBtn">保存</button>
+     </section>
+
+     <!-- Counters -->
+      <section class="counters">
+        <div id="counts"></div>
+      </section>
+
+      <!-- Read -->
+       <section>
+        <ul id="todoList"></ul>
+       </section>
+  </main>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
